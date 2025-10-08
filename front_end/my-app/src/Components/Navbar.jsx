@@ -27,7 +27,7 @@ const Navbar = () => {
                 <div className="sm:hidden text-white absolute left-4 text-2xl  " onClick={handleNav}>
                     {nav ? <AiOutlineClose /> : <AiOutlineMenu />}
                 </div>
-                <div className={nav ? "fixed h-full top-36 w-full bg-white  px-4 ease-in-out  duration-500 sm:hidden" : "fixed left-[-100%] sm:hidden"} >
+                <div className={nav ? "fixed h-full top-24 w-full bg-white py-10 px-4 ease-in-out  duration-500 sm:hidden" : "fixed left-[-100%] sm:hidden"} >
 
 
                     <ul className=" uppercase mt-10 mx-5 sm:hidden font-semibold text-gray-600 font-roboto" >
@@ -58,6 +58,7 @@ const Navbar = () => {
                 </button>
                 </div>
             </div>
+            
         </div>
 
     )
