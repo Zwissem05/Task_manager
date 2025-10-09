@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useRef } from "react";
 import Typed from "typed.js"
+import { assets } from '../assets/assests';
 
 
 const Text_section = () => {
@@ -32,13 +33,16 @@ const Text_section = () => {
                 <p className="p-1 text-[#87CEEB] md:text-2xl sm:text-xl">Perfect for managing your tasks  <span className="md:p-2  text-cyan-200 " ref={el}></span></p>
             </div>
             <div className='  flex flex-col items-center justify-center p-6 mt-5 sm:px-16 md:flex-row md:space-x-4 '>
-                <div className='bg-gray-300 w-full flex flex-col rounded-md sm:flex-row md:w-[600px]'>
-                <input
-                className='  placeholder:text-gray-600 py-3 px-5 bg-gray-300 rounded-md font-semibold sm:w-1/2' type='Email' placeholder='Enter your Email' required />
-                 <button className=' bg-green-700 rounded-md p-3 m-[5px] font-semibold whitespace-nowrap sm:w-1/2'>Sign Up </button>
-                 </div>
-            <button className=' w-full mt-6 bg-gray-500 border border-white p-3 rounded-md sm:w-[300px] md:mt-1 '>Try Task_Manager Capilot</button>
-        </div>
+                <div className='bg-gray-300 w-full flex flex-col rounded-md sm:flex-row md:w-[550px]'>
+                    <input
+                        className='  placeholder:text-gray-600 py-3 px-5 bg-gray-300 rounded-md font-semibold sm:w-1/2' type='Email' placeholder='Enter your Email' required />
+                    <button className=' bg-green-700 rounded-md p-3 m-[5px] font-semibold whitespace-nowrap sm:w-1/2'>Sign Up </button>
+                </div>
+                <button className=' w-full  mt-8 bg-gray-500 border border-white p-3 rounded-md sm:w-[300px] md:mt-[1px] md:py-[16px] md:w-[200px] whitespace-nowrap text-sm '>Try Task_Manager Capilot</button>
+            </div>
+ 
+
+
 
         </div >
     )

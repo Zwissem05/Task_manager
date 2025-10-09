@@ -1,12 +1,15 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Text_section from '../Components/text_section'
+import Animation from '../Components/animation'
+
 
 const Home = () => {
   return (
-    <div className=" bg-gradient-to-b from-[#0a0a2e] to-[#141452]">
+    <div>
       <Navbar/>
       <Text_section/>
+      <Animation/>
     </div>
   )
 }
