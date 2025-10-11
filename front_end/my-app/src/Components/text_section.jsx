@@ -27,8 +27,8 @@ const Text_section = () => {
 
     return (
 
-        <div className="max-w-[1240px]  text-white mx-auto">
-            <div className="max-w-[800px] flex flex-col  items-center  mx-auto mt-[80px] ">
+        <div className="max-w-[1240px]  text-white mx-auto fixed top-0 right-0 left-0">
+            <div className="max-w-[800px] flex flex-col  items-center  mx-auto md:mt-[250px] mt-[100px] ">
                 <h1 className="p-4 font-bold md:text-5xl text-white">Organize Your Work Smarter</h1>
                 <p className="p-1 text-[#87CEEB] md:text-2xl sm:text-xl">Perfect for managing your tasks  <span className="md:p-2  text-cyan-200 " ref={el}></span></p>
             </div>
