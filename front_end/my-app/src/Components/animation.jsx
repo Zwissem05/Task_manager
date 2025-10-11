@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'; // ✅ Ajout des imports
 import { assets } from '../assets/assests'
 import { motion, useScroll, useTransform } from "framer-motion"
 
-
 const Animation = () => {
-   const { scrollYProgress } = useScroll()
+  // ✅ Déclaration des variables manquantes
+  const [isFixed, setIsFixed] = useState(false);
+  const imageRef = useRef(null);
+  const { scrollY } = useScroll(); // ✅ Changé de scrollYProgress à scrollY
 
-  // 🎯 2. On crée deux effets :
-  // - y : l’image monte progressivement
-  // - opacity : elle devient visible en douceur
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, -800])
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1])
+  // ✅ Nouvelles animations basées sur scrollY
+  const y = useTransform(scrollY, [0, 300], [100, 0]);
+  const opacity = useTransform(scrollY, [0, 150], [0, 1]);
+  const scale = useTransform(scrollY, [0, 300], [0.8, 1]);
+
+  // ✅ Ajout de l'effet pour détecter le scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!imageRef.current) return;
+      
+      const rect = imageRef.current.getBoundingClientRect();
+      
+      if (rect.top <= 100 && !isFixed) {
+        setIsFixed(true);
+      } else if (rect.top > 100 && isFixed) {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isFixed]);
   return (
     <div >
       <div className='fixed top-[500Px] right-0 left-0'>
@@ -26,23 +45,33 @@ const Animation = () => {
             />
         </div >
         </div>
-          <motion.div 
-          className='  hidden md:flex justify-center m-14 relative mt-[900px]'
-          style={{ y, opacity }}>
-
-        <div className="absolute w-[1200px] h-[550px] blur-3xl   bg-[radial-gradient(rgba(255,100,255,1),rgba(0,0,0,0))] "></div>
-
-        <div className=' bg- m-3 rounded-lg bg-[rgba(255,100,255,0.4)] border border-blue-100 z-10'>
-        <img className='w-[1100px] h-[500px] p-4 '
-        src={assets.app} alt='/'/>
-        </div>
-
+   <div className={`${isFixed ? 'h-[600px] ' : ''}`}>
+        <motion.div 
+          ref={imageRef}
+          className='flex justify-center m-14 relative mt-[900px]'
+          style={{
+            y: isFixed ? undefined : y,
+            opacity: isFixed ? 1 : opacity,
+            scale: isFixed ? 1 : scale,
+            position: isFixed ? 'fixed' : 'relative',
+            top: isFixed ? '200px' : 'auto',    // Encore plus bas
+            left: isFixed ? '0' : 'auto',
+            right: isFixed ? '0' : 'auto',
+            zIndex: isFixed ? 40 : 'auto'
+          }}
+        >
+          <div className="absolute w-[1200px] h-[550px] blur-3xl bg-[radial-gradient(rgba(255,100,255,1),rgba(0,0,0,0))]"></div>
+          <div className='m-3 rounded-lg bg-[rgba(255,100,255,0.4)] border border-blue-100 z-10'>
+            <img 
+              className='w-[1100px] h-[500px] p-4'
+              src={assets.app}
+              alt='/'
+            />
+          </div>
         </motion.div>
-
-       
-            
-    </div>
-    
+      </div>
+      
+        </div>    
   )
 }
 
