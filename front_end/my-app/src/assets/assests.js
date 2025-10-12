@@ -8,6 +8,9 @@ import header_img from './header_img.png'
 import keyborad_icon from './keyboard-right-arrow-button.svg'
 import Task from './Task.svg'
 import app from './Managment.png'
+import robot1 from './Robot1.svg'
+import robot2 from './Robot2.svg'
+
 
 
 export const assets = {
@@ -21,4 +24,6 @@ export const assets = {
     keyborad_icon,
     Task,
     app,
+    robot1,
+    robot2,
 }
