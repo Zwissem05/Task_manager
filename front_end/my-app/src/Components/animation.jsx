@@ -33,7 +33,7 @@ const Animation = () => {
   return (
     <div >
       <div className='fixed top-[500Px] right-0 left-0'>
-         <div className=" hidden  relative md:flex items-center justify-center mt-20 animate-fade ">
+         <div className=" hidden  relative md:flex items-center justify-center mt-20 animate-fade1">
             {/* Effet lumineux circulaire */}
             <div className="absolute w-[1000px] h-[180px]  blur-3xl rounded-full  bg-[radial-gradient(circle,rgba(255,100,255,0.6),rgba(0,0,0,0))] "></div>
         

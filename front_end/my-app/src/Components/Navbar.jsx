@@ -40,10 +40,10 @@ const Navbar = () => {
             className={`fixed top-0 left-0 right-0 z-50  transition-colors duration-500 ${scrolled ? "bg-black " : "bg-transparent"
                 }`}
         >        <div className=' max-w-[1240px] mx-auto p-4 '>
-                <div className=' flex justify-center md:justify-between items-center relative'>
-                    <img className='w-16 sm:w-20 invert' src={assets.logo} alt='logo' />
+                <div className=' flex justify-center md:justify-between items-center relative mt-4'>
+                    <img className='w-8 sm:w-10 sm:mx-5  invert' src={assets.logo} alt='logo' />
                     <div className='flex gap-4'>
-                        <button className='absolute right-0 top-2 rounded-md px-5 py-1.5 border border-white text-white bg-[#0969DA] md:static'>
+                        <button  onClick={()=>navigate('SignIn')}className='absolute right-0 top-0 rounded-md px-5 py-1.5 border border-white text-white bg-[#0969DA] md:static'>
                             Sign in
                         </button>
                         <button onClick={() => navigate("/SignUp")} className=' hidden md:block rounded-md px-5 py-1.5  text-white  '>
@@ -80,7 +80,7 @@ const Navbar = () => {
                                 <img className='w-4' src={assets.keyborad_icon} alt='/' />
                             </div>
                         </ul>
-                        <button className=' rounded-md w-full mt-20 py-2  border border-white text-white bg-gray-800 font-semibold '>
+                        <button  onClick={()=>navigate('SignIn')} className=' rounded-md w-full mt-20 py-2  border border-white text-white bg-gray-800 font-semibold '>
                             Sign in
                         </button>
                     </div>

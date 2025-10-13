@@ -6,11 +6,15 @@ const SignUp = () => {
   const navigate = useNavigate()
   return (
     <div className=' min-h-screen  lg:flex  '>
-      <div className=' relative bg-linear-gradient(to bottom, #0a0a2e, #141452) w-full text-white p-10 lg:flex-[0_0_50%]'>
-        <h1 className='mb-4 md:hidden'>Already have an account? <span className='underline cursor-pointer' onClick={() => navigate('/SignIn')}>Sign in →</span></h1>
-        <h1 className='font-bold text-2xl sm:text-3xl md:text-4xl mt-16'>Create your free account</h1>
-        <h2 className='mt-10 '>Explore Task Managment's features for individuals and organizations.</h2>
-          <img src={assets.robot1} className=' lg:animate-float  w-[150px] mx-auto my-10   lg:mt-52 ' />
+      <div className='  bg-linear-gradient(to bottom, #0a0a2e, #141452) w-full text-white  lg:flex-[0_0_50%]'>
+        <div className='px-10 '>
+        <h1 className=' mt-8 lg:hidden'>Already have an account? <span className='underline cursor-pointer' onClick={() => navigate('/SignIn')}>Sign in →</span></h1>
+        <h1 className='font-bold text-2xl sm:text-3xl md:text-4xl lg:mt-16  mt-4'>Create your free account</h1>
+        <h2 className='mt-8 lg:mt-16 '>Explore Task Managment's features for individuals and organizations.</h2>
+        </div>
+        <div className='   lg:animate-fade2 mt-20'>
+          <img src={assets.robot1} className='   animate-float w-[150px] mx-auto  ' />
+          </div>
 
       </div>
       <div className='bg-white min-h-screen  px-10 lg:px-32 py-4 lg:flex-[0_0_50%]'>
