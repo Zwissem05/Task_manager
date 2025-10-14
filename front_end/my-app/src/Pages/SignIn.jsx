@@ -32,12 +32,17 @@ const SignIn = () => {
           </div>
           <button className='bg-green-700 w-full p-2.5 rounded-md mt-5 text-white'>Sign in</button>
 
-          <div className='flex items-center my-6'>
+          <div className='flex items-center mt-6'>
             <div className='flex-1 h-px bg-gray-300'></div>
             <span className='px-4 text-gray-600 font-medium'>or</span>
             <div className='flex-1 h-px bg-gray-300'></div>
           </div>
-
+          <button className=' flex justify-center bg-gray-100 w-full p-3 mb-8 mt-6 rounded-md '>
+          <div className='flex  gap-1 items-center '>
+            <img className='w-5' src={assets.Google_icone} />
+          <h1 className=' font-semibold'>Continue with Google</h1>
+          </div>
+          </button>
         </div>
         <h1>New to Task Managment? <span onClick={() =>navigate('/SignUp')} className='cursor-pointer underline text-blue-500'> Create an account</span></h1>
 

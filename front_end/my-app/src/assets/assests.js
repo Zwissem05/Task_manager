@@ -10,6 +10,7 @@ import Task from './Task.svg'
 import app from './Managment.png'
 import robot1 from './Robot1.svg'
 import robot2 from './Robot2.svg'
+import  Google_icone   from './google_icone.svg'
 
 
 
@@ -26,4 +27,5 @@ export const assets = {
     app,
     robot1,
     robot2,
+    Google_icone,
 }
