@@ -4,25 +4,59 @@ import axios from 'axios'
 // Configurer axios pour envoyer les credentials par défaut
 axios.defaults.withCredentials = true;
 import 'react-toastify/dist/ReactToastify.css'
-
 import { toast, ToastContainer } from 'react-toastify';
-
+import { useState } from 'react';
 const SignIn = () => {
-  const navigate = useNavigate()
-  const backendurl = import.meta.env.VITE_BACKEND_URL
+const navigate = useNavigate()
+const backendurl = import.meta.env.VITE_BACKEND_URL
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
-
-
-  const onClick = async (e) => {
+const onClick = async (e) => {
     try {
       window.location.href = backendurl + '/auth/google';
-    }
 
+    const {data} = await axios.post(backendurl + '/auth/google');
+      if(data.success)
+      {
+       navigate('/')
+      }
+
+      
+      else
+        toast(data.message)
+    
+      
+    }
     catch (err) {
       toast(err.message)
 
     }
   }
+
+   const onSubmitHandler= async (e) =>
+  {
+    try{
+      e.preventDefault();
+      const {data} = await axios.post(backendurl + '/auth/login',{email,password});
+      if(data.success)
+      {
+       navigate('/')
+      }
+
+      
+      else
+        toast(data.message)
+    
+      
+    }
+    catch(err)
+    {
+      toast(err.message)
+
+    }
+  }
+
 
   return (
     <div className=' bg-white min-h-screen  mx-auto '>
@@ -30,12 +64,14 @@ const SignIn = () => {
         <img src={assets.logo} className='w-14 mx-auto mt-16' />
         <h1 className='my-5  font-roboto font-bold text-lg'>Sign up for Task Mangament</h1>
         <div className='w-full border-gray-950 '>
+          <form onSubmit={onSubmitHandler}>
           {/* Email */}
           <h1 className='mt-4 font-roboto font-semibold text-md'>Email adress</h1>
           <div className='flex items-center rounded-sm border border-gray-400  gap-5 px-6 py-2 my-3 '>
             <img src={assets.mail_icon} alt='/' />
             <input
-              className=' outline-none' type='text' placeholder='Email' required />
+              className=' outline-none w-full' type='text' placeholder='Email'   onChange={(e) => setEmail(e.target.value)}
+ value={email} required />
           </div>
 
           {/* Password */}
@@ -48,9 +84,16 @@ const SignIn = () => {
           <div className='flex items-center rounded-sm border  border-gray-400  gap-5 px-6 py-2 my-3'>
             <img src={assets.lock_icon} alt='/' />
             <input
-              className='bg-transparent outline-none  ' type='password' placeholder='Password' required />
+              className='bg-white outline-none w-full   ' type='password'
+               placeholder='Password' 
+               value={password}
+                 onChange={(e) => setPassword(e.target.value)}
+             
+               required />
           </div>
-          <button className='bg-green-700 w-full p-2.5 rounded-md mt-5 text-white'>Sign in</button>
+                    <button type='submit' className='bg-green-700 w-full p-2.5 rounded-md mt-5 text-white'>Sign in</button>
+
+          </form>
 
           <div className='flex items-center mt-6'>
             <div className='flex-1 h-px bg-gray-300'></div>
