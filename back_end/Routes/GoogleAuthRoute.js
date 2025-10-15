@@ -115,7 +115,7 @@ router.get("/signin/callback", (req, res, next) => {
             secure: process.env.NODE_ENV === "production"
         });
         
-        res.redirect(process.env.FRONTEND_URL + "/dashboard");
+        res.redirect(process.env.FRONTEND_URL + "/");
     })(req, res, next);
 });
 
@@ -133,7 +133,7 @@ router.get("/signup/callback", (req, res, next) => {
         if (!user) {
             // Rediriger vers signin si le compte existe déjà
             if (info.message === 'USER_ALREADY_EXISTS') {
-                return res.redirect(process.env.FRONTEND_URL + "/signin?email=" + encodeURIComponent(info.email));
+                return res.redirect(process.env.FRONTEND_URL + "/signin?");
             }
             return res.redirect(process.env.FRONTEND_URL + "/signup?error=unknown");
         }
@@ -150,7 +150,7 @@ router.get("/signup/callback", (req, res, next) => {
             secure: process.env.NODE_ENV === "production"
         });
         
-        res.redirect(process.env.FRONTEND_URL + "/dashboard");
+        res.redirect(process.env.FRONTEND_URL + "/");
     })(req, res, next);
 });
 

@@ -14,19 +14,8 @@ const [password, setPassword] = useState('');
 
 const onClick = async (e) => {
     try {
-      window.location.href = backendurl + '/auth/google/signin';
-
-    const {data} = await axios.post(backendurl + '/auth/google/signup');
-      if(data.success)
-      {
-       navigate('/')
-      }
-
-      
-      else
-        toast(data.message)
+    window.location.href = backendurl + '/auth/google/signin';
     
-      
     }
     catch (err) {
       toast(err.message)

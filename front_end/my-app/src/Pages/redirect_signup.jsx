@@ -9,7 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { useState } from 'react';
 
 
-const redirect_signup = () => {
+const Redirect_signup = () => {
 const navigate = useNavigate()
 const backendurl = import.meta.env.VITE_BACKEND_URL
 const [email, setEmail] = useState('');
@@ -80,4 +80,4 @@ const [password, setPassword] = useState('');
   )
 }
 
-export default redirect_signup
+export default Redirect_signup

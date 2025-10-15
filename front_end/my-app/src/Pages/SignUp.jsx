@@ -37,7 +37,7 @@ const SignUp = () => {
           </div>
 
       </div>
-      <div className='bg-white min-h-screen  px-10 xl:px-32  py-4 lg:flex-[0_0_50%]'>
+      <div className='bg-white min-h-screen lg:px-16 px-10 xl:px-[100px]  py-4 lg:flex-[0_0_50%]'>
         <h1 className='mb-4 hidden lg:block text-right lg:mt-6'>Already have an account? <span className='underline cursor-pointer' onClick={() => navigate('/SignIn')}>Sign in →</span></h1>
         <h1 className='mb-5 mt-6  font-semibold text-xl'>Sign up for Task Mangament</h1>
                      <button onClick={onClick}  className=' flex justify-center bg-gray-100 w-full p-3 mt-10 rounded-md '>
