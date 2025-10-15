@@ -1,11 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import session from 'express-session';
-import passport from 'passport';
+
 import { configDotenv } from 'dotenv';
-import { Register } from './Controllers/UserController.js';
-import AuthRou from './Routes/AuthRoute.js';
+import  autroute from './Routes/AuthRoute.js'
 
 configDotenv(); // ✅ Exécution correcte
 
@@ -18,23 +16,15 @@ app.use(cookieParser());
 
 // ✅ Autoriser ton frontend React
 app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
+  origin: 'http://localhost:5173', // ✅ frontend exact
+
+  credentials: true // ✅ très important pour permettre les cookies
 }));
 
-// ✅ Session (obligatoire pour Passport)
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'ma_super_cle_secrete',
-  resave: false,
-  saveUninitialized: false
-}));
 
-// ✅ Initialisation Passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 // ✅ Routes
-app.use('/auth/google', AuthRou);
+app.use('/auth',autroute)
 
 // ✅ Lancement du serveur
 app.listen(PORT, () => {

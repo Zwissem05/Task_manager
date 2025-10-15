@@ -15,7 +15,7 @@ const SignUp = () => {
   
     const onClick = async (e) => {
       try {
-        window.location.href = backendurl + '/auth/google';
+        window.location.href = backendurl + '/auth/google/signup';
       }
   
       catch (err) {

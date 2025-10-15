@@ -1,3 +1,4 @@
+import React from 'react'
 import { assets } from '../assets/assests'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -6,36 +7,18 @@ axios.defaults.withCredentials = true;
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer } from 'react-toastify';
 import { useState } from 'react';
-const SignIn = () => {
+
+
+const redirect_signup = () => {
 const navigate = useNavigate()
 const backendurl = import.meta.env.VITE_BACKEND_URL
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-
-const onClick = async (e) => {
-    try {
-      window.location.href = backendurl + '/auth/google/signin';
-
-    const {data} = await axios.post(backendurl + '/auth/google/signup');
-      if(data.success)
-      {
-       navigate('/')
-      }
-
-      
-      else
-        toast(data.message)
-    
-      
-    }
-    catch (err) {
-      toast(err.message)
-
-    }
-  }
+ 
 
    const onSubmitHandler= async (e) =>
   {
+
     try{
       e.preventDefault();
       const {data} = await axios.post(backendurl + '/auth/login',{email,password});
@@ -73,24 +56,6 @@ const onClick = async (e) => {
               className=' outline-none w-full' type='text' placeholder='Email'   onChange={(e) => setEmail(e.target.value)}
  value={email} required />
           </div>
-
-          {/* Password */}
-          <div className='flex items-center justify-between'>
-            <h1 className='mt-4 font-roboto text-md font-semibold'>Password</h1>
-            <span className=' cursor-pointer text-blue-500' onClick={() => navigate('/ForgotPassword')}>Forgot password? </span>
-
-          </div>
-
-          <div className='flex items-center rounded-sm border  border-gray-400  gap-5 px-6 py-2 my-3'>
-            <img src={assets.lock_icon} alt='/' />
-            <input
-              className='bg-white outline-none w-full   ' type='password'
-               placeholder='Password' 
-               value={password}
-                 onChange={(e) => setPassword(e.target.value)}
-             
-               required />
-          </div>
                     <button type='submit' className='bg-green-700 w-full p-2.5 rounded-md mt-5 text-white'>Sign in</button>
 
           </form>
@@ -115,4 +80,4 @@ const onClick = async (e) => {
   )
 }
 
-export default SignIn
+export default redirect_signup
