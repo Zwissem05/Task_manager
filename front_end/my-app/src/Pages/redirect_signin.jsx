@@ -17,9 +17,10 @@ const Redirect_signin = () => {
     const email = searchParams.get('email');
     const name = searchParams.get('name');
     const source = searchParams.get('source');
+     const [emai, setEmai] = useState(email);
+    
     const navigate = useNavigate()
     const backendurl = import.meta.env.VITE_BACKEND_URL
-    const [emai, setEmai] = useState('');
     const [password, setPassword] = useState('');
 
     const onClick = async (e) => {
@@ -62,7 +63,7 @@ const Redirect_signin = () => {
                 <div className='w-full border-gray-950 '>
                     <form onSubmit={onSubmitHandler}>
                         {/* Email */}
-                        <h1 className='mt-4 font-roboto font-semibold text-md'>Email adress</h1>
+                        <h1 className='mt-4 font-roboto font-semibold text-md'>Email dress</h1>
                         <div className='flex items-center rounded-sm border border-gray-400  gap-5 px-6 py-2 my-3 '>
                             <img src={assets.mail_icon} alt='/' />
                             <input
@@ -73,7 +74,7 @@ const Redirect_signin = () => {
                         {/* Password */}
                         <div className='flex items-center justify-between'>
                             <h1 className='mt-4 font-roboto text-md font-semibold'>Password</h1>
-                            <span className=' cursor-pointer text-blue-500' onClick={() => navigate('/ForgotPassword')}>Forgot password? </span>
+                            <span className=' cursor-pointer underline text-blue-500' onClick={() => navigate('/ForgotPassword')}>Forgot password? </span>
 
                         </div>
 

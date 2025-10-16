@@ -12,12 +12,14 @@ import { useSearchParams } from 'react-router-dom';
 
 
 const Redirect_signup = () => {
-    const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   // Récupération des valeurs passées dans l'URL
   const email = searchParams.get('email');
   const name = searchParams.get('name');
   const source = searchParams.get('source');
+ const [emai, setEmai] = useState(email);
+
 
   const navigate = useNavigate()
   const backendurl = import.meta.env.VITE_BACKEND_URL
@@ -50,26 +52,18 @@ const Redirect_signup = () => {
       </div>
       <div className='bg-white min-h-screen lg:px-16 px-10 xl:px-[100px]  py-4 lg:flex-[0_0_50%]'>
         <h1 className='mb-4 hidden lg:block text-right lg:mt-6'>Already have an account? <span className='underline cursor-pointer' onClick={() => navigate('/SignIn')}>Sign in →</span></h1>
-        <h1 className='mb-5 mt-6  font-semibold text-xl'>Sign up for Task Mangament</h1>
-                     <button onClick={onClick}  className=' flex justify-center bg-gray-100 w-full p-3 mt-10 rounded-md '>
-                    <div className='flex  gap-3 items-center '>
-                      <img className='w-5' src={assets.Google_icone} />
-                      <h1 className=' font-semibold font-roboto text-gray-70'>Continue with Google</h1>
-                    </div>
-                  </button>
-                  <div className='flex items-center mt-6'>
-                    <div className='flex-1 h-px bg-gray-300'></div>
-                    <span className='px-4 text-gray-600 font-medium'>or</span>
-                    <div className='flex-1 h-px bg-gray-300'></div>
-                  </div>
+        <h1 className='mb-5 mt-16  font-semibold text-xl'>Sign up for Task Mangament</h1>
+                
                
         {/* Email */}
-        <h1 className='mt-4 font-roboto text-md'>Email*</h1>
-        <div className='flex items-center rounded-sm border border-gray-400  gap-5 px-6 py-2 my-3 '>
+        <h1 className='mt-12 font-roboto text-md'>Email*</h1>
+        <div className='flex items-center rounded-sm border border-gray-400 bg-gray-200  gap-5 px-6 py-2 my-3 '>
           <img src={assets.mail_icon} alt='/' />
           <input
-            className=' outline-none flex-1' type='text' placeholder='Email' required />
+            className=' bg-transparent flex-1 ' type='text' placeholder='Email' value={emai} required />
         </div>
+        <h1 className='underline text-blue-400 cursor-pointer' onClick={() => navigate("/signin")}>utiliser un autre compte email</h1>
+
 
       
         <h1 className='mt-4 font-roboto text-md'>Name*</h1>

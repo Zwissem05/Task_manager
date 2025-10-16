@@ -23,6 +23,11 @@ function App() {
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/ForgotPassword" element={<PasswordForgoten />} />
           <Route path="/ForgotenPassword" element={<PasswordForgoten />} />
+          <Route path="/signing" element={<Redirect_signin />} />
+           <Route path="/signingup" element={<Redirect_signup />} />
+
+         
+
         </Routes>
       </BrowserRouter>
 

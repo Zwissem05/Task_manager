@@ -66,7 +66,7 @@ const onClick = async (e) => {
           {/* Password */}
           <div className='flex items-center justify-between'>
             <h1 className='mt-4 font-roboto text-md font-semibold'>Password</h1>
-            <span className=' cursor-pointer text-blue-500' onClick={() => navigate('/ForgotPassword')}>Forgot password? </span>
+            <span className='  underline cursor-pointer text-blue-500' onClick={() => navigate('/ForgotPassword')}>Forgot password? </span>
 
           </div>
 

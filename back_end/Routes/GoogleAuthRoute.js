@@ -101,7 +101,7 @@ router.get("/signin/callback", (req, res, next) => {
                     name: info.name,
                     source: 'google'
                 });
-        return res.redirect(process.env.FRONTEND_URL + "/signup?" + params.toString());
+        return res.redirect(process.env.FRONTEND_URL + "/signingup?" + params.toString());
             }
             return res.redirect(process.env.FRONTEND_URL + "/signin?error=unknown");
         }
@@ -143,7 +143,7 @@ router.get("/signup/callback", (req, res, next) => {
                     name: info.name,
                     source: 'google'
                 });
-                return res.redirect(process.env.FRONTEND_URL + "/signin?" + params.toString());
+                return res.redirect(process.env.FRONTEND_URL + "/signing?" + params.toString());
             }
             return res.redirect(process.env.FRONTEND_URL + "/signup?error=unknown");
         }
