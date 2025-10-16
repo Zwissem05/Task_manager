@@ -11,6 +11,7 @@ import Redirect_signin from './Pages/redirect_signin';
 
 
 
+
 function App() {
   return (
     <div>
@@ -22,12 +23,6 @@ function App() {
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/ForgotPassword" element={<PasswordForgoten />} />
           <Route path="/ForgotenPassword" element={<PasswordForgoten />} />
-          <Route path="/signup?" element={<Redirect_signup />} />
-          <Route path="/signin?" element={<Redirect_signin />} />
-
-
-
-
         </Routes>
       </BrowserRouter>
 

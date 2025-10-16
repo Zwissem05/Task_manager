@@ -18,13 +18,13 @@ passport.use('google-signin', new GoogleStrategy({
 }, async (req, accessToken, refreshToken, profile, done) => {
     try {
         // Vérifie si l'utilisateur existe
-        let user = await prisma.user.findUnique({ 
-            where: { email: profile.emails[0].value } 
+        let user = await prisma.user.findUnique({
+            where: { email: profile.emails[0].value }
         });
 
         if (!user) {
             // Utilisateur non trouvé → rediriger vers signup
-            return done(null, false, { 
+            return done(null, false, {
                 message: 'USER_NOT_FOUND',
                 email: profile.emails[0].value,
                 name: profile.displayName
@@ -48,13 +48,13 @@ passport.use('google-signup', new GoogleStrategy({
 }, async (req, accessToken, refreshToken, profile, done) => {
     try {
         // Vérifie si l'utilisateur existe déjà
-        let user = await prisma.user.findUnique({ 
-            where: { email: profile.emails[0].value } 
+        let user = await prisma.user.findUnique({
+            where: { email: profile.emails[0].value }
         });
 
         if (user) {
             // Utilisateur existe déjà → rediriger vers signin
-            return done(null, false, { 
+            return done(null, false, {
                 message: 'USER_ALREADY_EXISTS',
                 email: profile.emails[0].value
             });
@@ -87,34 +87,37 @@ router.get("/signin", passport.authenticate("google-signin", {
 router.get("/signin/callback", (req, res, next) => {
     passport.authenticate("google-signin", (err, user, info) => {
         if (err) {
+            console.log(err);
             return res.redirect(process.env.FRONTEND_URL + "/signin?error=auth_failed");
         }
-        
+
         if (!user) {
             // Rediriger vers signup avec les infos du compte Google
+                        console.log(info.message);
+
             if (info.message === 'USER_NOT_FOUND') {
                 const params = new URLSearchParams({
                     email: info.email,
                     name: info.name,
                     source: 'google'
                 });
-                return res.redirect(process.env.FRONTEND_URL + "/signup?");
+        return res.redirect(process.env.FRONTEND_URL + "/signup?" + params.toString());
             }
             return res.redirect(process.env.FRONTEND_URL + "/signin?error=unknown");
         }
 
         // Connexion réussie
         const token = jwt.sign(
-            { id: user.id }, 
-            process.env.JWT_SECRET,
+            { id: user.id },
+            process.env.Jwt_Token,
             { expiresIn: '7d' }
         );
-        
-        res.cookie("token", token, { 
+
+        res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production"
         });
-        
+
         res.redirect(process.env.FRONTEND_URL + "/");
     })(req, res, next);
 });
@@ -129,27 +132,27 @@ router.get("/signup/callback", (req, res, next) => {
         if (err) {
             return res.redirect(process.env.FRONTEND_URL + "/signup?error=auth_failed");
         }
-        
+
         if (!user) {
             // Rediriger vers signin si le compte existe déjà
             if (info.message === 'USER_ALREADY_EXISTS') {
-                return res.redirect(process.env.FRONTEND_URL + "/signin?");
+                return res.redirect(process.env.FRONTEND_URL + "/signin?" + params.toString());
             }
             return res.redirect(process.env.FRONTEND_URL + "/signup?error=unknown");
         }
 
         // Inscription réussie
         const token = jwt.sign(
-            { id: user.id }, 
-            process.env.JWT_SECRET,
+            { id: user.id },
+            process.env.Jwt_Token,
             { expiresIn: '7d' }
         );
-        
-        res.cookie("token", token, { 
+
+        res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production"
         });
-        
+
         res.redirect(process.env.FRONTEND_URL + "/");
     })(req, res, next);
 });
