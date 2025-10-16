@@ -87,7 +87,7 @@ router.get("/signin", passport.authenticate("google-signin", {
 router.get("/signin/callback", (req, res, next) => {
     passport.authenticate("google-signin", (err, user, info) => {
         if (err) {
-            console.log(err);
+  console.log("Google Auth Error:", err);
             return res.redirect(process.env.FRONTEND_URL + "/signin?error=auth_failed");
         }
 
@@ -130,12 +130,19 @@ router.get("/signup", passport.authenticate("google-signup", {
 router.get("/signup/callback", (req, res, next) => {
     passport.authenticate("google-signup", (err, user, info) => {
         if (err) {
+              console.log("Google Auth Error:", err);
+
             return res.redirect(process.env.FRONTEND_URL + "/signup?error=auth_failed");
         }
 
         if (!user) {
             // Rediriger vers signin si le compte existe déjà
             if (info.message === 'USER_ALREADY_EXISTS') {
+                          const params = new URLSearchParams({
+                    email: info.email,
+                    name: info.name,
+                    source: 'google'
+                });
                 return res.redirect(process.env.FRONTEND_URL + "/signin?" + params.toString());
             }
             return res.redirect(process.env.FRONTEND_URL + "/signup?error=unknown");
