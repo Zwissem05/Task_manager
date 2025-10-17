@@ -21,10 +21,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/ForgotPassword" element={<PasswordForgoten />} />
-          <Route path="/ForgotenPassword" element={<PasswordForgoten />} />
-          <Route path="/signing" element={<Redirect_signin />} />
+           <Route path="/signing" element={<Redirect_signin />} />
            <Route path="/signingup" element={<Redirect_signup />} />
+           <Route path="/ForgotPassword" element={<PasswordForgoten />} />
+
 
          
 
