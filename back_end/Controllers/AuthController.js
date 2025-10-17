@@ -93,7 +93,7 @@ export const send_Reset_Otp = async (req, res) => {
         const user = await prisma.user.findUnique({ where: { email: email } });
         
         if (!user) {
-            return res.status(404).json({ success: false, message: 'User not found' });
+            return res.status(400).json({ success: false, message: 'User not found' });
         }
 
         const otp = String(Math.floor(100000 + Math.random() * 900000));
@@ -122,7 +122,7 @@ Your OTP reset password is: ${otp}`
 
     } catch (err) {
         console.error(err);
-        return res.status(500).json({ success: false, message: err.message });
+        return res.status(500).json({ success: false, message: err.message});
     }
 }
 

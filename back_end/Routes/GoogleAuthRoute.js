@@ -66,6 +66,7 @@ passport.use('google-signup', new GoogleStrategy({
                 name: profile.displayName,
                 email: profile.emails[0].value,
                 password: "", // OAuth user
+                ResetOtp:"",
             }
         });
 

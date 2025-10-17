@@ -20,8 +20,8 @@ model User {
   password  String
   createdAt DateTime   @default(now())
   category  Category[]
-  ResetOtp String
-  ResetOtpExpiresAt Int @default(0)
+   ResetOtp           String?
+   ResetOtpExpiresAt  DateTime?
 }
 
 model Category {

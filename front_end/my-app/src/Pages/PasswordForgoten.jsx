@@ -12,22 +12,25 @@ const PasswordForgoten = () => {
   const navigate=useNavigate()
   const [isotpsent, setIsotpsnet] = useState(false)
 
-    const backendurl = import.meta.env.VITE_BACKEND_URL
+  const backendurl = import.meta.env.VITE_BACKEND_URL
 
   const onSubmitEmail = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(backendurl + '/auth/send-resetOtp', { email })
+      const { data } = await axios.post(backendurl +'/auth/send-resetOtp', { email })
       if (data.success){
         toast.success(data.message)
         setIsemailsent(true)
       }
       else
-        toast(data.message)
+      {
+      toast.warning(data.message);      }
 
     } catch (error) {
       toast(error.message)
     }
+
+
 
   }
 
@@ -93,6 +96,7 @@ const PasswordForgoten = () => {
             />
           </div>
           <button
+          type='submit'
             className='bg-gradient-to-br from-indigo-500 to-indigo-900 rounded-full w-[150px] py-2 hover:to-white transition duration-300 
                     '>Suivant</button>
         </form>
