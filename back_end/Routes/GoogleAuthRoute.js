@@ -4,6 +4,7 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { PrismaClient } from "@prisma/client";
 import jwt from "jsonwebtoken";
 import { configDotenv } from "dotenv";
+import transporter from '../config/nodemailer.js'
 
 configDotenv();
 const prisma = new PrismaClient();
@@ -69,6 +70,16 @@ passport.use('google-signup', new GoogleStrategy({
                 ResetOtp:"",
             }
         });
+        
+         // Sending the email
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: user.email,
+            subject: "Welcome",
+            text: ` Dear ${profile.emails[0].value } Welcome to Our App 'Task Manager'`
+        };
+
+        await transporter.sendMail(mailOptions);
 
         return done(null, user);
 

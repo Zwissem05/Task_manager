@@ -35,6 +35,17 @@ export const register = async (req, res) => {
             maxAge: 7 * 24 * 60 * 60 * 1000,
 
         })
+
+         // Sending the email
+        const mailOptions = {
+            from: process.env.SENDER_EMAIL,
+            to: user.email,
+            subject: "Welcome",
+            text: ` Dear ${name} 
+            Welcome to Our App 'Task Manager'`
+        };
+
+        await transporter.sendMail(mailOptions);
         return res.status(201).json(user)
     }
 
@@ -112,7 +123,7 @@ export const send_Reset_Otp = async (req, res) => {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: "OTP Reset Password",
-            text: `Welcome to Our App GreatStack!!!
+            text: `Welcome to Our App "Task Manager"!!!
 Your OTP reset password is: ${otp}`
         };
 
