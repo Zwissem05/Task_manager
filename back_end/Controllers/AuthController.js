@@ -11,10 +11,10 @@ export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body
         if (!name || !email || !password)
-            return res.json({ error: "Missing Information" });
+            return res.json({ succes:false,message: "Missing Information" });
 
         if (await prisma.user.findUnique({ where: { email: email } }))
-            return res.json({ error: `${email} does already exists` });
+            return res.json({succes:false,message:`User does already exists` });
 
         const salt = await bcrypt.genSalt(10)
         const hashedCode = await bcrypt.hash(password, salt)
@@ -66,7 +66,7 @@ export const login = async (req, res) => {
             return res.status(422).json({ error: "Missing Information" });
         const user = await prisma.user.findUnique({ where: { email: email } })
         if (!user)
-            return res.status(422).json({ error: `${email} does not exists` });
+            return res.status(422).json({succes:false,message: `${email} does not exists` });
 
 
         const isMatch = await bcrypt.compare(password, user.password)

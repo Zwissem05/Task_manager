@@ -25,8 +25,10 @@ const onClick = async (e) => {
 
    const onSubmitHandler= async (e) =>
   {
+
     try{
-      e.preventDefault();
+          e.preventDefault();
+
       const {data} = await axios.post(backendurl + '/auth/login',{email,password});
       if(data.success)
       {

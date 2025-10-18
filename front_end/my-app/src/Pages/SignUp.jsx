@@ -45,7 +45,7 @@ const SignUp = () => {
       {
         try{
           e.preventDefault();
-          const {data} = await axios.post(backendurl + '/auth/register',{email,name,password});
+          const {data} = await axios.post(backendurl + '/auth/register',{name,email,password});
           if(data.success)
           {
            navigate('/')
@@ -120,7 +120,7 @@ const SignUp = () => {
             className='bg-transparent outline-none flex-1' type='Name' placeholder='Name' onChange={(e) => setName(e.target.value)} required />
         </div>
         <h1 className='text-gray-600 my-4'>Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.</h1>
-          <button  type='submit' className='text-white w-full  rounded-md p-4 bg-gray-800 my-8 text-center font-semibold text-lg cursor-pointer'>Create account </button>
+          <button  type='submit' className='text-white w-full  rounded-md p-5 bg-gray-800 my-8 font-semibold text-lg cursor-pointer'>Create account </button>
         </form>
         <p className='text-sm text-gray-600' >By creating an account, you agree to the Terms of Service. For more information about GitHub's privacy practices, see the GitHub Privacy Statement. We'll occasionally send you account-related emails.</p>
       </div>
