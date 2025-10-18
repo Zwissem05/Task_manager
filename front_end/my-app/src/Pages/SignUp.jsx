@@ -1,15 +1,29 @@
 import React from 'react'
 import { assets } from '../assets/assests'
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+
 import axios from 'axios'
 // Configurer axios pour envoyer les credentials par défaut
 axios.defaults.withCredentials = true;
 import 'react-toastify/dist/ReactToastify.css'
 import { toast} from 'react-toastify';
+import { useState } from 'react';
 
 const SignUp = () => {
   const navigate = useNavigate()
+  const location=useLocation()
+  const [email,setEmail]=useState("")
   const backendurl = import.meta.env.VITE_BACKEND_URL
+
+  useEffect(() => {
+    // Si on vient d'une autre page avec un email dans le state
+    if (location.state && location.state.email) {
+      setEmail(location.state.email);
+    }
+  }, [location.state]); // s'exécute quand la page se charge
+
   
   
   
@@ -57,7 +71,7 @@ const SignUp = () => {
         <div className='flex items-center rounded-sm border border-gray-400  gap-5 px-6 py-2 my-3 '>
           <img src={assets.mail_icon} alt='/' />
           <input
-            className=' outline-none flex-1' type='text' placeholder='Email' required />
+            className=' outline-none flex-1' type='text' placeholder='Email' value={email}   onChange={(e) => setEmail(e.target.value)} required />
         </div>
 
         {/* Password */}

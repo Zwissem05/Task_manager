@@ -104,7 +104,7 @@ export const send_Reset_Otp = async (req, res) => {
         const user = await prisma.user.findUnique({ where: { email: email } });
         
         if (!user) {
-            return res.status(400).json({ success: false, message: 'User not found' });
+            return res.json({ success: false, message: 'User not found' });
         }
 
         const otp = String(Math.floor(100000 + Math.random() * 900000));
@@ -155,18 +155,18 @@ export const verify_resetOtp = async (req, res) => {
         const user = await prisma.user.findUnique({ where: { email: email } });
         
         if (!user) {
-            return res.status(404).json({ success: false, message: 'User not found' });
+            return res.json({ success: false, message: 'User not found' });
         }
 
         // CORRECTION: Vérifier si l'OTP existe et correspond
         if (!user.ResetOtp || user.ResetOtp !== resetOtp) {
             console.log('Expected:', user.ResetOtp, 'Received:', resetOtp);
-            return res.status(400).json({ success: false, message: 'Reset OTP invalid' });
+            return res.json({ success: false, message: 'Reset OTP invalid' });
         }
 
         // CORRECTION: Vérifier la date d'expiration
         if (user.ResetOtpExpiresAt < new Date()) {
-            return res.status(400).json({ success: false, message: 'Reset OTP expired. Try Again!' });
+            return res.json({ success: false, message: 'Reset OTP expired. Try Again!' });
         }
 
         const salt = await bcrypt.genSalt(10);

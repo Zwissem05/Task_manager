@@ -3,12 +3,14 @@ import { useEffect, useRef } from "react";
 import Typed from "typed.js"
 import { assets } from '../assets/assests';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const Text_section = () => {
     // Créer une référence pour l'élément qui contiendra l'animation
     const el = useRef(null);
     const navigate=useNavigate()
+    const [email,setEmail]=useState("")
     useEffect(() => {
         const options = {
             strings: ['professionally', 'personally'],
@@ -36,8 +38,9 @@ const Text_section = () => {
             <div className='  flex flex-col items-center justify-center p-6 mt-5 sm:px-16 md:flex-row md:space-x-4 '>
                 <div className='bg-gray-300 w-full flex flex-col rounded-md sm:flex-row md:w-[550px]'>
                     <input
-                        className='  placeholder:text-gray-600 py-3 px-5 bg-gray-300 rounded-md font-semibold sm:w-1/2' type='Email' placeholder='Enter your Email' required />
-                    <button onClick={() => navigate('SignUp')} className='  bg-green-700 rounded-md p-3 m-[5px] font-semibold whitespace-nowrap sm:w-1/2'>Sign Up </button>
+                        className='  placeholder:text-gray-600 py-3 px-5 bg-gray-300 rounded-md font-semibold sm:w-1/2' type='Email' placeholder='Enter your Email'         
+                        onChange={(e) => setEmail(e.target.value) } required />
+                    <button onClick={() => navigate('SignUp',{state:{email:email}})} className='  bg-green-700 rounded-md p-3 m-[5px] font-semibold whitespace-nowrap sm:w-1/2'>Sign Up </button>
                 </div>
                 <button className=' w-full  mt-8 bg-gray-500 border border-white p-3 rounded-md sm:w-[300px] md:mt-[1px] md:py-[16px] md:w-[200px] whitespace-nowrap text-sm '>Try Task_Manager Capilot</button>
             </div>
