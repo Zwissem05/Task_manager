@@ -15,6 +15,9 @@ const SignUp = () => {
   const navigate = useNavigate()
   const location=useLocation()
   const [email,setEmail]=useState("")
+  const [name,setName]=useState("")
+  const [password,setPassword]=useState("")
+
   const backendurl = import.meta.env.VITE_BACKEND_URL
 
   useEffect(() => {
@@ -37,6 +40,30 @@ const SignUp = () => {
   
       }
     }
+
+     const onSubmitHandler= async (e) =>
+      {
+        try{
+          e.preventDefault();
+          const {data} = await axios.post(backendurl + '/auth/register',{email,name,password});
+          if(data.success)
+          {
+           navigate('/')
+          }
+    
+          
+          else
+            toast.warning(data.message)
+        
+          
+        }
+        catch(err)
+        {
+          toast(err.message)
+    
+        }
+      }
+    
   
   return (
     <div className=' min-h-screen  lg:flex  '>
@@ -65,7 +92,8 @@ const SignUp = () => {
                     <span className='px-4 text-gray-600 font-medium'>or</span>
                     <div className='flex-1 h-px bg-gray-300'></div>
                   </div>
-               
+
+        <form onSubmit={onSubmitHandler}>
         {/* Email */}
         <h1 className='mt-4 font-roboto text-md'>Email*</h1>
         <div className='flex items-center rounded-sm border border-gray-400  gap-5 px-6 py-2 my-3 '>
@@ -80,7 +108,7 @@ const SignUp = () => {
         <div className='flex items-center rounded-sm border  border-gray-400  gap-5 px-6 py-2 my-3'>
           <img src={assets.lock_icon} alt='/' />
           <input
-            className='bg-transparent outline-none flex-1' type='password' placeholder='Password' required />
+            className='bg-transparent outline-none flex-1' type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <h1 className='text-gray-600 my-4'>Password should be at least 15 characters OR at least 8 characters including a number and a lowercase letter.</h1>
 
@@ -89,12 +117,11 @@ const SignUp = () => {
         <div className='flex items-center rounded-sm border  border-gray-400  gap-5 px-6 py-2 my-3'>
           <img src={assets.person_icon} alt='/' />
           <input
-            className='bg-transparent outline-none flex-1' type='Name' placeholder='Name' required />
+            className='bg-transparent outline-none flex-1' type='Name' placeholder='Name' onChange={(e) => setName(e.target.value)} required />
         </div>
         <h1 className='text-gray-600 my-4'>Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.</h1>
-        <div className='rounded-md p-4 bg-gray-800 my-8'>
-          <h1 className='text-white text-center font-semibold text-lg'>Create account </h1>
-        </div>
+          <button  type='submit' className='text-white w-full  rounded-md p-4 bg-gray-800 my-8 text-center font-semibold text-lg cursor-pointer'>Create account </button>
+        </form>
         <p className='text-sm text-gray-600' >By creating an account, you agree to the Terms of Service. For more information about GitHub's privacy practices, see the GitHub Privacy Statement. We'll occasionally send you account-related emails.</p>
       </div>
 

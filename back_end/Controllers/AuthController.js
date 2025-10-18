@@ -11,10 +11,10 @@ export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body
         if (!name || !email || !password)
-            return res.status(422).json({ error: "Missing Information" });
+            return res.json({ error: "Missing Information" });
 
         if (await prisma.user.findUnique({ where: { email: email } }))
-            return res.status(422).json({ error: `${email} does already exists` });
+            return res.json({ error: `${email} does already exists` });
 
         const salt = await bcrypt.genSalt(10)
         const hashedCode = await bcrypt.hash(password, salt)
