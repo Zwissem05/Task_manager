@@ -121,6 +121,7 @@ const PasswordForgoten = () => {
             ))}
 
           </div>
+          <h1>Did not receive Otp <span onClick={onSubmitEmail} className='underline cursor-pointer text-blue-400 '>Resend Otp password</span></h1>
           <button type='submit' className=' mt-3 bg-gradient-to-br from-indigo-500 to-indigo-900 rounded-full w-[150px] py-2 hover:to-white transition duration-300 
                     '>Suivant</button>
         </form>
