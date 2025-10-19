@@ -29,10 +29,9 @@ const Text_section = () => {
     }, []);
 
     return (
-
-        <div className="max-w-[1240px]  text-white mx-auto fixed top-0 right-0 left-0 bglinear-gradient(to bottom, #0a0a2e, #141452);
-">
-            <div className="max-w-[800px] flex flex-col  items-center  mx-auto md:mt-[250px] mt-[100px] ">
+        
+        <div className="max-w-[1240px]  text-white mx-auto mt-20 md:mt-36 ">
+            <div className="max-w-[800px] flex flex-col  items-center  mx-auto  ">
                 <h1 className="p-4 font-bold md:text-5xl text-white">Organize Your Work Smarter</h1>
                 <p className="p-1 text-[#87CEEB] md:text-2xl sm:text-xl">Perfect for managing your tasks  <span className="md:p-2  text-cyan-200 " ref={el}></span></p>
             </div>

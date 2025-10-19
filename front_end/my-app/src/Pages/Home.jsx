@@ -8,9 +8,11 @@ import Sponsors from '../Components/Sponsors'
 const Home = () => {
   return (
     <div>
+
       <Navbar/>
       <Text_section/>
-      <Sponsors/>
+                  <Sponsors/>
+
       
     </div>
   )

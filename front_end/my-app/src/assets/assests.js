@@ -15,6 +15,7 @@ import Duolingo from './duolingo.svg'
 import Ford from './ford.svg'
 import Spotify from './spotify.svg'
 import Shopify from './shopify.svg'
+import Toyota from './toyota.svg'
 
 
 
@@ -37,4 +38,5 @@ export const assets = {
     Ford,
     Shopify,
     Spotify,
+    Toyota,
 }
