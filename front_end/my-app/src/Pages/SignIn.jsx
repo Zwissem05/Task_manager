@@ -101,7 +101,7 @@ const onClick = async (e) => {
         <h1>New to Task Managment? <span onClick={() => navigate('/SignUp')} className='cursor-pointer underline text-blue-500'> Create an account</span></h1>
 
       </div>
-
+     
     </div>
   )
 }

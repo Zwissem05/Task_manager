@@ -11,6 +11,11 @@ import app from './Managment.png'
 import robot1 from './Robot1.svg'
 import robot2 from './Robot2.svg'
 import  Google_icone   from './google_icone.svg'
+import Duolingo from './duolingo.svg'
+import Ford from './ford.svg'
+import Spotify from './spotify.svg'
+import Shopify from './shopify.svg'
+
 
 
 
@@ -28,4 +33,8 @@ export const assets = {
     robot1,
     robot2,
     Google_icone,
+    Duolingo,
+    Ford,
+    Shopify,
+    Spotify,
 }
