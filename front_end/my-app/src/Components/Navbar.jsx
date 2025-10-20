@@ -87,6 +87,16 @@ const Navbar = () => {
                 </div>
 
             </div>
+            <h1>              🚀
+</h1>
+            <motion.div
+              initial={{ x: -200, y: -200, opacity: 0 }}
+              animate={{ x: 400, y: 200, opacity: [1, 1, 0] }}
+              transition={{ duration: 3, ease: "easeInOut" }}
+              className="text-white text-2xl w-8"
+            >
+              🚀
+            </motion.div>
         </div>
 
     )

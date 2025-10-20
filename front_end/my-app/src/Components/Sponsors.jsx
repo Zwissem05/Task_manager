@@ -1,29 +1,43 @@
 import React from 'react'
 import { assets } from '../assets/assests'
+import {motion} from "framer-motion"
 
 const Sponsors = () => {
   return (
-    <div className="flex justify-evenly items-center flex-wrap w-full px-8 py-10 bg-transparent mt-14">
+    <div>
       
-      <div className="flex flex-col justify-center items-center gap-2">
-        <img src={assets.Duolingo} alt="Duolingo" className="h-12 object-contain invert" />
-        <h1 className="text-white text-sm md:text-base">Duolingo</h1>
-      </div>
+      
+      <motion.div
+  initial={{ opacity: 0, y: -50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  Bonjour Motion 🚀
+</motion.div>
+<motion.button
+  whileHover={{ scale: 1.2, backgroundColor: "#ff4081" }}
+  whileTap={{ scale: 0.9 }}
+>
+  Clique-moi 🎉
+</motion.button>
 
-      <div className="flex flex-col justify-center items-center gap-2">
-        <img src={assets.Ford} alt="Ford" className="h-12 object-contain invert" />
-        <h1 className="text-white text-sm md:text-base">Ford</h1>
-      </div>
+<motion.ul initial="hidden" animate="visible" variants={{
+  visible: { transition: { staggerChildren: 0.9 } }
+}}>
+  <motion.li variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>1</motion.li>
+  <motion.li variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>2</motion.li>
+  <motion.li variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}>3</motion.li>
+</motion.ul>
+<motion.div
+  initial={{ x: -200, y: -200, opacity: 0 }}
+  animate={{ x: 400, y: 200, opacity: [1, 1, 0] }}
+  transition={{ duration: 3, ease: "easeInOut" }}
+  className="text-white text-2xl w-8"
+>
+  🚀
+</motion.div>
 
-      <div className="flex flex-col justify-center items-center gap-2">
-        <img src={assets.Shopify} alt="Shopify" className="h-12 object-contain invert" />
-        <h1 className="text-white text-sm md:text-base">Shopify</h1>
-      </div>
 
-      <div className="flex flex-col justify-center items-center gap-2">
-        <img src={assets.Spotify} alt="Spotify" className="h-12 md:h-14 object-contain invert" />
-        <h1 className="text-white text-sm md:text-base">Spotify</h1>
-      </div>
 
     </div>
   )
