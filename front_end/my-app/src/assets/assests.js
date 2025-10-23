@@ -16,7 +16,7 @@ import Ford from './ford.svg'
 import Spotify from './spotify.svg'
 import Shopify from './shopify.svg'
 import Toyota from './toyota.svg'
-
+import TaskManager from './TaskManager.svg'
 
 
 
@@ -39,4 +39,5 @@ export const assets = {
     Shopify,
     Spotify,
     Toyota,
+    TaskManager,
 }
