@@ -5,6 +5,7 @@ import Animation from '../Components/animation'
 import Sponsors from '../Components/Sponsors'
 import Fonctionalities from '../Components/Fonctionalities'
 import About from '../Components/About'
+import Footer from '../Components/Footer'
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <Sponsors/>
       <Fonctionalities />
       <About/>
+      <Footer/>
     </div>
   )
 }
