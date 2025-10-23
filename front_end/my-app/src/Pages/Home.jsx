@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar'
 import Text_section from '../Components/text_section'
 import Animation from '../Components/animation'
 import Sponsors from '../Components/Sponsors'
+import Fonctionalities from '../Components/Fonctionalities'
 
 
 const Home = () => {
@@ -11,7 +12,8 @@ const Home = () => {
 
       <Navbar/>
       <Text_section/>
-                  <Sponsors/>
+      <Sponsors/>
+      <Fonctionalities />
 
       
     </div>
