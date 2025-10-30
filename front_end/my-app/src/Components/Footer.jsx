@@ -11,7 +11,7 @@ from 'react-icons/fa'
 function Footer() {
     return (
         <div className=" bg-white pb-8 ">
-        <div className="max-w-[1240px] mx-auto text-black  ">
+        <div className="max-w-[1240px] mx-auto text-black px-20  ">
             <div className="grid lg:grid-cols-3 items-center px-10 ">
                     <div>
                     <h1 className="text-blue-800 font-bold text-3xl text-center ">Task Manger.</h1>
@@ -23,7 +23,7 @@ function Footer() {
                     <FaTwitterSquare size={30} />
                     </div>
                     </div>
-                    <div className="lg:col-span-2  flex justify-between flex-wrap  text-sm md:text-md sm:px-10 pt-3  ">
+                    <div className="lg:col-span-2  flex justify-around flex-wrap  text-sm md:text-md sm:px-10 pt-3  ">
                     
                     <ul className="p-1  flex flex-col justify-center items-center  ">
                         <p className="text-gray-500 font-bold md:text-xl p-3">Acceuil </p>
