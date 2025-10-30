@@ -11,13 +11,14 @@ import Footer from '../Components/Footer'
 const Home = () => {
   return (
     <div>
-
-      <Navbar/>
-      <Text_section/>
-      <Sponsors/>
+      <div className="bg-gradient-to-b from-[#0a0a2e] to-[#141452]">
+        <Navbar />
+        <Text_section />
+      </div>
+      <Sponsors />
       <Fonctionalities />
-      <About/>
-      <Footer/>
+      <About />
+      <Footer />
     </div>
   )
 }
