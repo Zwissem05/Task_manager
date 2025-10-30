@@ -3,7 +3,6 @@ import { assets } from '../assets/assests'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { motion, useScroll, useTransform } from "framer-motion"
 
 
 
@@ -14,32 +13,16 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const navigate=useNavigate()
 
-  // ✅ useEffect placé ici (pas dans handleNav)
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // nettoyage quand le composant est démonté
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  
+   
   const handleNav = () => {
     setNav(!nav);
   };
 
 
     return (
-        <div
-            className={` z-50  transition-colors duration-500 ${scrolled ? "bg-black " : "bg-transparent"
-                }`}
-        >        <div className=' max-w-[1240px] mx-auto p-4 '>
+        <div>
+                    <div className=' max-w-[1240px] mx-auto p-4'>
                 <div className=' flex justify-center md:justify-between items-center relative mt-4'>
                     <img className='w-8 sm:w-10 sm:mx-5  invert' src={assets.logo} alt='logo' />
                     <div className='flex gap-4'>

@@ -5,7 +5,7 @@ import triple from "../assets/triple.png"
 
 const Fonctionalities = () => {
   return (
-    <div className="bg-white mt-20 p-20 ">
+    <div className="bg-white mt-10 p-20 ">
         <div className="grid md:grid-cols-3 gap-8 max-w-[1240px] mx-auto ">
         <div className=" w-full border shadow-2xl rounded-lg py-10 hover:scale-105 duration-300">
          <img src={single} alt="/" className="mx-auto w-24" />
