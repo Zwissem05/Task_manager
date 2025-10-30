@@ -4,8 +4,8 @@ import { assets } from '../assets/assests'
 const About = () => {
   return (
     <div className=' bg-white'>
-    <div className='flex flex-col lg:flex-row max-w-[1240px] mx-auto justify-center  gap-4  '>
-    <div className='text-black  flex-[2] my-10 md:text-md px-10 '>
+    <div className='flex flex-col lg:flex-row max-w-[1240px] mx-auto justify-center  gap-4 px-24 xl:px-10 '>
+    <div className='text-black  flex-[2] my-10 md:text-md '>
         <h1 className='font-extrabold font-roboto md:text-xl py-3 '>About Us Task Manager</h1>
         <p>Welcome to  <span className='font-bold'>Task Manager</span>, your trusted tool for organizing daily tasks and boosting productivity.
 Our mission is to make task management simple, efficient, and accessible for everyone from students to professionals.
